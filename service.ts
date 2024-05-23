@@ -46,8 +46,23 @@ export function movieRecommendationService (
                 movieRecommendFirstModal(id).then((results)=>{
 
                     console.log("results 1:", results.rows);
-                    resolve(results.rows);
+                    // resolve(results.rows);
+                    const resultMap = new Map();
+                    results.rows.forEach((movie) => {
+                        if(resultMap.has(movie.id)) {
+                            if(movie.rating > resultMap.get(movie.id).rating){
+                                resultMap.set(movie.id, movie);
+                            }
+                        } else {
+                            resultMap.set(movie.id, movie);
+                        }
+                    })
 
+                    const resultSet = new Set(resultMap.values());
+                    console.log("results 2:", resultSet);
+                    const resultArray = Array.from(resultSet);
+                    resolve(resultArray);
+                    
                 }).catch(error => {
                     console.error("Error fetching movie recommendations 1:", error);
                     reject("Internal server error in fetching movie recommendations 1");
