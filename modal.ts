@@ -16,14 +16,15 @@ const tradeSchema = new mongoose.Schema<ITrade>({
   market: String,
   amount: Number,
   price: Number
-}, {versionKey:false});
+});
 
 const Trade = mongoose.model<ITrade>('Trade', tradeSchema);
 export default Trade;
 
 
 
-
+//Pa3TzpFZirr9IiLH mongodb atlas password, dd7059-username
+//mongodb+srv://dd7059:Pa3TzpFZirr9IiLH@cluster0.jelg3pq.mongodb.net/
 
 
 

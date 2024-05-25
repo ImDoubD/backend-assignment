@@ -29,7 +29,11 @@ export const calculateBalance = async (timestamp: string): Promise<Record<string
   trades.forEach((trade) => {
     const [base, _] = trade.market.split('/');
     if (!balance[base]) balance[base] = 0;
-    balance[base] += trade.operation === 'Buy' ? trade.amount : -trade.amount;
+    if(trade.operation === 'Buy'){
+        balance[base] += trade.amount;
+    } else {
+        balance[base] += -trade.amount;
+    }
   });
   return balance;
 };
