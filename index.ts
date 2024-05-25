@@ -6,7 +6,7 @@ const app = express();
 const port = 6969; // Use your preferred port
 
 // Connect to MongoDB
-const mongoDBUri = 'mongodb://localhost:27017/assignment';
+const mongoDBUri = 'mongodb+srv://dd7059:Pa3TzpFZirr9IiLH@cluster0.jelg3pq.mongodb.net/assignment';
 mongoose.connect(mongoDBUri)
   .then(() => console.log('Successfully connected to MongoDB.'))
   .catch(error => console.error('MongoDB connection error:', error));
